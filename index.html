@@ -1,345 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width,initial-scale=1" name="viewport"> 
-  <meta content="description" name="description">
-  <meta name="google" content="notranslate" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Patrick Semillano</title>
+  <meta name="description" content="Portfolio of Your Name, a developer specializing in modern web technologies." />
 
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="./static/assets/apple-icon-180x180.png">
-  <link href="./static/assets/images/favicon.ico" rel="icon">
+  <!-- Minimal, Tailwind-like design tokens -->
+  <style>
+    :root{
+      --background:#fff; --foreground:#111; --muted:#fafafa;
+      --border:#eaeaea; --accent:#111; --accent-weak:#666;
+      --card-bg:#fff; --pill-bg:#fafafa;
+    }
+    [data-theme="dark"]{
+      --background:#0a0a0a; --foreground:#ededed; --muted:#1a1a1a;
+      --border:#2a2a2a; --accent:#ededed; --accent-weak:#999;
+      --card-bg:#111; --pill-bg:#1a1a1a;
+    }
+    *{box-sizing:border-box} 
+    html,body{margin:0;background:var(--background);color:var(--foreground);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";transition:background .3s, color .3s;}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:960px;margin:0 auto;padding:2rem 1rem}
+    .grid{display:grid;gap:1rem}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:768px){ .grid-2,.grid-3{grid-template-columns:1fr} }
 
-  <title>John Patrick Semillano</title>  
+    .bento{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1rem;transition:.2s}
+    .bento:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px rgba(0,0,0,.3)}
 
-<link href="./static/main.3f6952e4.css" rel="stylesheet"></head>
+    .header{display:flex;gap:1rem;align-items:center}
+    .avatar{width:120px;height:120px;border-radius:12px;flex:0 0 auto;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:grid;place-items:center;color:#fff;font-weight:800;font-size:2.5rem;}
+    .title{font-size:1.75rem;font-weight:800;line-height:1.2}
+    .subtitle{color:var(--accent-weak);margin-top:.25rem}
 
-<body class="minimal">
-<div id="site-border-left"></div>
-<div id="site-border-right"></div>
-<div id="site-border-top"></div>
-<div id="site-border-bottom"></div>
+    .section{margin-top:2rem}
+    .section h2{font-size:1.1rem;font-weight:800;margin:0 0 .75rem;display:flex;align-items:center;gap:.5rem}
+    .pill{display:inline-block;padding:.25rem .5rem;border:1px solid var(--border);border-radius:8px;background:var(--pill-bg);font-size:.75rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+    .muted{color:var(--accent-weak)}
 
-<!-- Add your site or app content here -->
-  <div class="hero-full-container background-image-container white-text-container" style="background-image: url('./static/assets/images/himalaya-unsplash.jpg')">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="hero-full-wrapper">
-            <div class="text-content">
-              <h1>Hello,<br>
-                <span id="typed-strings">
-                  <span>I'm John Patrick</span>
-                  <span>This is my landing page in ADET</span>
-                  <span>Welcome!</span>
-                </span>
-                <span id="typed"></span>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    /* Timeline (Experience) */
+    .timeline{position:relative;padding-left:1.25rem}
+    .timeline::before{content:"";position:absolute;left:.5rem;top:.25rem;bottom:.25rem;width:1px;background:var(--border)}
+    .tl-item{position:relative;padding-left:1rem;margin:.75rem 0}
+    .tl-item::before{content:"";position:absolute;left:-.125rem;top:.35rem;width:.5rem;height:.5rem;border:2px solid var(--accent);background:var(--accent);border-radius:50%}
+    .tl-role{font-weight:700}
+    .tl-meta{display:flex;justify-content:space-between;gap:.75rem;font-size:.75rem;color:var(--accent-weak);flex-wrap:wrap}
+    .right{margin-left:auto}
 
-<!-- ================== FEATURED ====================-->
-<div class="section-container">
-  <div class="container">
-  <div class="row">
+    /* Small helpers */
+    .row{display:flex;gap:.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);padding:.4rem .6rem;border-radius:8px;background:var(--pill-bg);font-size:.8rem;cursor:pointer;transition:.2s}
+    .btn:hover{background:var(--muted)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .nowrap{white-space:nowrap}
+    .foot{margin:2rem 0;color:var(--accent-weak);font-size:.9rem}
     
-    <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
-      <div class="text-center">
-        <h1 class="h2">Featured Project:</h1> 
-        <h2>Wanderlust Tracker: A To-do List App</h2>
-        <p>
-          Introducing Wanderlust Tracker: Your PHP-powered travel to-do list app! Seamlessly create, manage, and update your travel bucket list with CRUD functions. Plan your adventures, track your progress, and make unforgettable memories on your journey. Use it now and start ticking off your travel goals!
-        </p>
-      </div>
-      </div>
-          <div class="col-md-12">
-            <div>
-              <a title="Todo List App">
-                <img src="./static/assets/images/feature-prof.png" alt="" class="img-responsive">
-                </a>
-                <div class="card-container card-container-lg">
-                  <h4>FEATURED:</h4>
-                <h3>To-do Application</h3>
-                <p>
-                  <ul>
-                    <li><b>Technology Stack:</b> HTML, CSS, Bootstrap, and PHP.</li>
-                    <li><b>CRUD Operations:</b> Implements Create, Read, Update, and Delete.</li>
-                    <p>With Wanderlust Tracker, turn your wanderlust into organized adventures with just a few clicks. Whether it's exploring new destinations or revisiting old favorites.</p>
-                  </ul>
-                </p>
-                <a href="./work.html" title="" class="btn btn-default">Discover</a>
-                <a href="https://github.com/UntaintedTech/ADET-Summative-3" title="" class="btn btn-default">Github</a>
-                </div>
-              </div>             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    /* Theme toggle */
+    .theme-toggle{position:fixed;top:1.5rem;right:1.5rem;width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);box-shadow:0 2px 8px rgba(0,0,0,.1);cursor:pointer;display:grid;place-items:center;font-size:1rem;z-index:100;transition:.2s}
+    .theme-toggle:hover{background:var(--muted)}
 
-<!-- ====================ABOUT ME ========================-->
-<div class="section-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="section-container-spacer text-center">
-          <h1 class="h2">01 : About me</h1>
+    @media (max-width:768px){
+      .header{flex-direction:column;text-align:center}
+      .avatar{margin:0 auto}
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- HERO -->
+    <header class="bento header">
+      <div class="avatar" id="avatar">YN</div>
+      <div>
+        <div class="title">John Patrick Semillano</div>
+        <div class="subtitle">Data Science • Data Analyst • AI/ML</div>
+        <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="#experience">Experience</a>
+          <a class="btn" href="#contact">Contact</a>
         </div>
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <div class="row">
-              <div class="col-xs-12 col-md-6">
-                <!-- PUT YOUR NAME -->
-                <h3>JOHN PATRICK SEMILLANO</h3> 
-                <p> 
-                  A <b>second year student</b> of the FEU Institute of Technology, Bachelor of Science in Computer Science with a specialization in 
-                  Data Science.
-                </p>
-                <p> 
-                  During their tenure as an <b>Externals Committee Member</b> at the FEU Tech Association for Computing Machinery Student Chapter, he
-                  excelled as the Speakerships Head, masterminding the speaker invitation process and cultivating relationships with industry figures. 
-                </p>
-                <p> 
-                  Concurrently, he held the role of <b>Internal Relations Lead</b> at the Google Developer Student Clubs FEU Institute of Technology, 
-                  where their adept leadership fostered team synergy and communication. Through regular meetings and an inclusive approach, they 
-                  nurtured a supportive environment for club officers, contributing significantly to the club's success and cohesion.
-                </p>
-                <p>
-                  With a solid educational background and proven leadership experience, he is confident to make meaningful contributions in the 
-                  field of computer science and data science.
-                </p>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="section grid grid-2">
+      <article class="bento">
+        <h2>About</h2>
+        <p>Short intro about you. What problems you love solving, your favorite stack, and the kind of teams you thrive in.</p>
+        <p class="muted" style="margin-top:.5rem">Tip: keep this to 3–5 sentences.</p>
+      </article>
+
+      <article class="bento">
+        <h2>Beyond Coding</h2>
+        <p>What you're learning (AI, product, startups), interests (minimalism, OSS), or community work.</p>
+      </article>
+    </section>
+
+    <!-- EXPERIENCE (timeline) -->
+    <section id="experience" class="section bento">
+      <div class="row">
+        <h2>Experience</h2>
+        <!-- <a class="btn" href="#" onclick="window.print();return false;">Print Résumé</a> -->
+      </div>
+      <div class="timeline" id="expTimeline"></div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="tech" class="section bento">
+      <div class="row">
+        <h2>Tech Stack</h2>
+        <a class="btn" href="#tech">View All</a>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:.5rem">
+        <div>
+          <div class="tl-role" style="margin-bottom:.4rem">Programming</div>
+          <div class="chips" id="frontendChips"></div>
+        </div>
+        <div>
+          <div class="tl-role" style="margin-bottom:.4rem">Machine Learning</div>
+          <div class="chips" id="backendChips"></div>
+        </div>
+        <div>
+          <div class="tl-role" style="margin-bottom:.4rem">Tools</div>
+          <div class="chips" id="toolsChips"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="row" style="margin-bottom:.5rem">
+        <h2>PROJECTS</h2>
+        <a class="btn" href="#">View All</a>
+      </div>
+      <div class="grid grid-3" id="projectsGrid"></div>
+    </section>
+
+    <!-- CERTIFICATIONS & RECOMMENDATIONS -->
+    <section id="certs" class="section grid grid-2">
+      <article class="bento">
+        <h2>📜 Certifications</h2>
+        <ul id="certList" style="margin:.25rem 0 0 1rem"></ul>
+      </article>
+      <article class="bento">
+        <h2>Recommendations</h2>
+        <blockquote id="recBlock" class="muted" style="margin:0"></blockquote>
+      </article>
+    </section>
+
+    <!-- SOCIAL LINKS -->
+    <section id="contact" class="section bento">
+      <h2>Social</h2>
+      <div class="chips" id="socialChips"></div>
+    </section>
+
+    <footer class="foot">
+      © <span id="year"></span> John Patrick Semillano. Built with vanilla HTML/CSS/JS. Deployed on GitHub Pages.
+    </footer>
+  </main>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+
+  <!-- Data & bootstrap script -->
+  <script>
+    // ---- Replace these with your real data ----
+    // TO ADD NEW ITEMS: Just copy a line, paste it, and change the values
+    // IMPORTANT: Make sure each item ends with a comma (,) except the last one
+    
+    const BADGES = [
+      {label:"Top 1% on Platform X"},
+      {label:"Hackathon Winner 2025"},
+      {label:"OSS Maintainer"}
+      // Add more like: {label:"Your Achievement"},
+    ];
+
+    const EXPERIENCE = [
+      {role:"Youtube Content Creator", when:"September 2024 — September 2025", details:"Founded and ran a faceless YouTube channel that reached 500K subscribers and 80M views within a year through strategic content planning and optimization."},
+      {role:"Externals - Speakerships Head", when:"September 2023 — July 2024", details:"Association for Computing Machinery Student Chapter (ACM)"},
+      {role:"Internal Relations Lead", when:"October 2023 – December 2023", details:"Google Developer Student Clubs FEU Institute of Technology (GDSC)"},
+      {role:"Logistics Junior Officer", when:"April 2023 — July 2023", details:"Association for Computing Machinery Student Chapter (ACM)"},
+      {role:"BS Computer Science specialized in Data Science", when:"2022 — Present", details:"FEU Institute of Technology"},
+      {role:'print("Hello world!")', when:"2021", details:"Wrote my first line of code in Python."}
+      // Add more like: {role:"Job Title", when:"2020 — 2022", details:"What you did."},
+    ];
+
+    const TECH = {
+      frontend:["Python"," SQL","Java","C++"],
+      backend:["scikit-learn","TensorFlow","Keras","Genetic Algorithms","Ensemble Stacking","Supervised and Unsupervised Learning","Clustering","Neural Networks (CNNs, RNNs)"],
+      tools:["Pandas","NumPy","Matplotlib","Power BI","Excel","Git","Google Colab","Jupyter","VS Code"]
+      // Add more categories like: devops:["Jenkins","Kubernetes"],
+    };
+
+    const PROJECTS = [
+      {name:"GOSCHED: Optimizing Patient Scheduling Using Genetic Algorithms with Random Forest for Patient Volume Prediction", tagline:"Developed an end-to-end scheduling system for multi-branch clinics using Genetic Algorithms for optimal doctor-patient allocation and Random Forest Regression to forecast patient volume.", link:"#", tag:"Research Project" },
+      {name:"UFC Fight Outcome Prediction", tagline:"Developed an end-to-end machine learning pipeline using ensemble stacking (Random Forest, Gradient Boosting, Neural Networks) to predict UFC fight outcomes, incorporating decay-weighted sampling for recent match emphasis and visualizing insights via Power BI dashboards.", link:"#", tag:"Personal Project"},
+      // Add more like: {name:"Project Name", tagline:"Short description", link:"#", tag:"category"},
+    ];
+
+    const CERTS = [
+      "Certiport IT Specialist - Python ",
+      "PMI Project Management Ready™",
+      "IBM Data Engineering Essentials",
+      "IBM Python Project for Data Engineering",
+      "IBM Python for Data Science and AI",
+      "Yale University Financial Markets"
+      // Add more like: "Certification Name",
+    ];
+
+    const RECO = "Bring a short, specific quote from a teammate or manager highlighting your impact.";
+
+    const SOCIAL = [
+      {label:"Email", url:"mailto:jpatricksemillano@gmail.com"},
+      {label:"LinkedIn", url:"https://www.linkedin.com/in/jpsemillano/"},
+      {label:"GitHub", url:"https://github.com/UntaintedTech"},
+      {label:"Medium", url:"https://john-patrick-semillano.medium.com/"}
+      // Add more like: {label:"Twitter", url:"https://twitter.com/yourhandle"},
+    ];
+
+    // ---- Renderers (modular; removing a section doesn't break others) ----
+    const $ = s => document.querySelector(s);
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    };
+    
+    const initTheme = () => {
+      const savedTheme = 'light';
+      setTheme(savedTheme);
+    };
+    
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
+
+    // Experience
+    function renderExperience(){
+      try {
+        const el = $("#expTimeline");
+        el.innerHTML = EXPERIENCE.map(e => `
+          <div class="tl-item">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+              <div class="tl-role">${e.role}</div>
+              <span class="pill mono nowrap">${e.when}</span>
+            </div>
+            <div class="muted" style="margin-top:.25rem">${e.details}</div>
+          </div>
+        `).join("");
+      } catch(err) {
+        console.error("Error rendering experience:", err);
+        $("#expTimeline").innerHTML = '<p class="muted">⚠️ Error loading experience. Check the EXPERIENCE array syntax.</p>';
+      }
+    }
+
+    // Tech chips
+    function chipify(arr){ return arr.map(t=>`<span class="pill">${t}</span>`).join(""); }
+
+    // Projects
+    function renderProjects(){
+      try {
+        $("#projectsGrid").innerHTML = PROJECTS.map(p => `
+          <article class="bento">
+            <a href="${p.link}" target="_blank" rel="noopener">
+              <div class="row">
+                <div style="font-weight:700">${p.name}</div>
+                <span class="pill mono">${p.tag}</span>
               </div>
-              <div class="col-xs-12 col-md-6">
-                <img src="./static/assets/images/profile.jpg" class="img-responsive" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-                          
-<!-- ==================PROJECTS/WORKS ====================-->
-<div class="section-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
-        <div class="text-center">
-          <h1 class="h2">02 : Projects</h1>
-          <p>
-            Discover a compilation of projects I've developed. From To-do list applications to websites and web scrapers, this section 
-            showcases the diverse range of my creations. Each project reflects my dedication. 
-            Explore this portfolio to gain insight into my skills and accomplishments.
-          </p>
-        </div>
-      </div>
+              <p class="muted" style="margin-top:.35rem">${p.tagline}</p>
+            </a>
+          </article>
+        `).join("");
+      } catch(err) {
+        console.error("Error rendering projects:", err);
+        $("#projectsGrid").innerHTML = '<p class="muted">⚠️ Error loading projects. Check the PROJECTS array syntax.</p>';
+      }
+    }
 
-      <div class="col-md-12">
-     
-      <div id="myCarousel" class="carousel slide projects-carousel">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <div class="row">
-                    <div class="col-sm-4">
-                      <!--============== WORK 1 ==============-->
-                      <a href="./work.html" title="" class="#">
-                        <img src="./static/assets/images/work01-hover.jpg" alt="" class="img-responsive">
-                      </a>
-                      <div class="card-container card-container-lg">
-                        <h4>001/005</h4>
-                        <h3>To-do Application</h3>
-                        <p>
-                          <b>Technology Stack:</b> HTML, CSS, Bootstrap, and PHP.
-                          <b>CRUD Operations:</b> Implements Create, Read, Update, and Delete.
-                        </p>
-                        <a href="http://travelerstodolist.infinityfreeapp.com/" title="" class="btn btn-default">Discover</a>
-                        <a href="https://github.com/UntaintedTech/ADET-Summative-3" title="" class="btn btn-default">Github</a>
-                      </div>
-                      <!--============== WORK 2 ==============-->
-                    </div>
-                    <div class="col-sm-4">
-                      <a href="./work.html" title="" class="#">
-                        <img src="./static/assets/images/work02-hover.jpg" alt="" class="img-responsive">
-                      </a>
-                      <div class="card-container card-container-lg">
-                        <h4>002/005</h4>
-                        <h3>Bot Buddies</h3>
-                        <p>
-                          <b>Technology Stack:</b> HTML, CSS, JS, and REACT.
-                          <b>Implementation:</b> Implements image and text API integration.
-                        </p>
-                        <a href="https://untaintedtech.github.io/Bot-Buddies/" title="" class="btn btn-default">Discover</a>
-                        <a href="https://github.com/UntaintedTech/Bot-Buddies" title="" class="btn btn-default">Github</a>
-                      </div>
-                    </div>
-                    <!--============== WORK 3 ==============-->
-                    <div class="col-sm-4">
-                      <a href="./work.html" title="" class="#">
-                        <img src="./static/assets/images/work03-hover.jpg" alt="" class="img-responsive">
-                      </a>
-                      <div class="card-container card-container-lg">
-                        <h4>003/005</h4>
-                        <h3>HN web scapper</h3>
-                        <p>Data scrapping scripts of Hacker News website using BeautifulSoup.</p>
-                        <a href="https://github.com/UntaintedTech/HN-data-scrapper" title="" class="btn btn-default">Github</a>
-                      </div>
-                    </div>
-                    
-                </div>
-                <!--/row-->
-            </div>
-            <!--/item-->
-            <div class="item">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <a href="./work.html" class="black-image-project-hover">
-                      <img src="./static/assets/images/work02-hover.jpg" alt="Image" class="img-responsive">
-                    </a>
-                    <div class="card-container">
-                      <h4>004/006</h4>
-                      <h3>Nulla scelerisque</h3>
-                      <p>Proin pharetra metus id iaculis dignissim. In aliquet lorem ut ex ullamcorper.</p>
-                      <a href="./work.html" class="btn btn-default">Discover</a>
-                    </div>
-                  </div>
-                   <div class="col-sm-4">
-                      <a href="./work.html" class="black-image-project-hover">
-                        <img src="./static/assets/images/work01-hover.jpg" alt="Image" class="img-responsive">
-                      </a>
-                      <div class="card-container">
-                        <h4>005/006</h4>
-                        <h3>Fringilla sit amet</h3>
-                        <p>Nulla facilisi. Vivamus vestibulum, elit in scelerisque ultricies.</p>
-                        <a href="./work.html" class="btn btn-default">Discover</a>
-                      </div>
-                    </div>
-                    
-                    <div class="col-sm-4">
-                      <a href="./work.html" class="black-image-project-hover">
-                        <img src="./static/assets/images/work03-hover.jpg" alt="Image" class="img-responsive">
-                      </a>
-                      <div class="card-container">
-                        <h4>006/006</h4>
-                        <h3>Vivamus vestibulum</h3>
-                        <p>Fusce sed hendrerit augue, a rhoncus velit. In non lorem mattis, tempor sem sit amet.</p>
-                        <a href="./work.html" class="btn btn-default">Discover</a>
-                      </div>
-                    </div>
-                    
-                </div>
-                <!--/row-->
-            </div>
-            
-            <!--/item-->
-        </div>
-        <!--/carousel-inner--> 
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+    // Certs & Reco
+    function renderCerts(){
+      $("#certList").innerHTML = CERTS.map(c=>`<li>${c}</li>`).join("");
+      $("#recBlock").textContent = RECO;
+    }
 
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-     </div>
-    </div>
-  </div>
-</div>
+    // Social
+    function renderSocial(){
+      $("#socialChips").innerHTML = SOCIAL.map(s=>`<a class="pill" href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join("");
+    }
 
-<!-- ==================CONTACTS====================-->
-<div class="section-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="section-container-spacer text-center">
-          <h1 class="h2">03 : Contact me</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-             <form action="" class="reveal-content">
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="subject" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" rows="5" placeholder="Enter your message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-default btn-lg">Send</button>
-                  </div>
-                  <div class="col-md-5 address-container">
-                    <ul class="list-unstyled">
-                      <li>
-                        <span class="fa-icon">
-                          <i class="fa fa-phone" aria-hidden="true"></i>
-                        </span>
-                        + 6390 000 0000
-                      </li>
-                      <li>
-                        <span class="fa-icon">
-                          <i class="fa fa-at" aria-hidden="true"></i>
-                        </span>
-                        jpatricksemillano@gmail.com
-                      </li>
-                      <li>
-                        <span class="fa-icon">
-                          <i class="fa fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                        Sampaloc, Manila, Philippines
-                      </li>
-                    </ul>
-                    <h3>Follow me on social networks</h3>
-                    <a href="http://www.facebook.com/trcksmlln" title="" class="fa-icon">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                    <a href="http://www.twitter.com" title="" class="fa-icon">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="http://www.linkedin.com/in/jpsemillano" title="" class="fa-icon">
-                      <i class="fa fa-linkedin"></i>
-                    </a>
-
-                  </div>
-                </div>
-              </form>
-          </div>
-
-        </div>
-       
-     </div>
-    </div>
-  </div>
-</div>
-
-<footer class="footer-container text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <p>© UNTAINTED | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     type();
-     movingBackgroundImage();
-  });
-</script>
-
-
-<script type="text/javascript" src="./static/main.70a66962.js"></script></body>
-
+    // Boot
+    initTheme();
+    renderExperience();
+    $("#frontendChips").innerHTML = chipify(TECH.frontend);
+    $("#backendChips").innerHTML  = chipify(TECH.backend);
+    $("#toolsChips").innerHTML    = chipify(TECH.tools);
+    renderProjects(); 
+    renderCerts(); 
+    renderSocial();
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
